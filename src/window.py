@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 from tkinter import Tk, BOTH, Canvas, messagebox, Menu
+from maze import Line
 
 class Window:
     def __init__(self, height, width):
@@ -20,8 +23,16 @@ class Window:
             self.redraw()
         print("Window closed")
 
+    def draw_line(self, line: Line, fill):
+        line.draw(self.__canvas, fill)
+
+    def get_window_width(self):
+        return self.__window.winfo_width()
+    
+    def get_window_height(self):
+        return self.__window.winfo_height()
+
     def close(self):
         if messagebox.askokcancel("Close", "Are you sure you want to close the window?"):
             self.__window.destroy()
             self.__is_running=False
-        
